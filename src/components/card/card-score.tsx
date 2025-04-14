@@ -1,0 +1,55 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+interface ScoreData {
+  trimester1: {
+    score: string
+    color: string
+  }
+  trimester2: {
+    score: string
+    color: string
+  }
+  trimester3: {
+    score: string
+    color: string
+  }
+}
+
+interface CardScoreProps {
+  title: string
+  data: ScoreData
+}
+
+export function CardScore({ title, data }: CardScoreProps) {
+  return (
+    <Card className="bg-card w-full max-w-90 rounded-2xl border dark:bg-slate-950">
+      <CardHeader>
+        <CardTitle className="text-foreground">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex h-full w-full items-center justify-center gap-1">
+          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+            <span className="text-foreground text-lg">1º Trim</span>
+            <span className={`text-lg text-${data.trimester1.color}-500`}>
+              {data.trimester1.score}
+            </span>
+          </div>
+          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+            <span className="text-foreground text-lg">2º Trim</span>
+            <span className={`text-lg text-${data.trimester2.color}-500`}>
+              {data.trimester2.score}
+            </span>
+          </div>
+          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+            <span className="text-foreground text-lg">3º Trim</span>
+            <span
+              className={`text-lg ${data.trimester3.color ? `text-${data.trimester3.color}-500` : ''}`}
+            >
+              {data.trimester3.score}
+            </span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
