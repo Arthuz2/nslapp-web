@@ -1,4 +1,4 @@
-import { CardScore } from '@/components/card/card-score'
+import { CardScore } from '@/pages/app/home/components/card/card-score'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 const scoreData = [
@@ -23,7 +23,7 @@ const scoreData = [
     data: {
       trimester1: { score: '26/30', color: 'green' },
       trimester2: { score: '28/30', color: 'green' },
-      trimester3: { score: 'N/A', color: '' },
+      trimester3: { score: 'N/A', color: 'none' },
     },
   },
 ]

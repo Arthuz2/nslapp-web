@@ -1,4 +1,4 @@
-import { CardNews } from '@/components/card/card-news'
+import { CardNews } from '@/pages/app/home/components/card/card-news'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 const newsData = [
@@ -24,7 +24,7 @@ const newsData = [
 
 export function LastNews() {
   return (
-    <div className="bg-card flex flex-1 flex-col gap-2 rounded-2xl border p-3 dark:bg-slate-950">
+    <div className="bg-card flex flex-1 flex-col gap-2 rounded-2xl border p-3 dark:bg-gray-950">
       <div className="flex gap-2">
         <span className="text-muted-foreground text-lg font-bold">
           Últimas Notícias

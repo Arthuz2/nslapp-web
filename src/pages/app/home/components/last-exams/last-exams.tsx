@@ -1,4 +1,4 @@
-import { CardExam } from '@/components/card/card-exam'
+import { CardExam } from '@/pages/app/home/components/card/card-exam'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 const examsData = [
@@ -23,8 +23,14 @@ const examsData = [
 ]
 
 export function LastExams() {
+  examsData.sort((a, b) => {
+    const scoreA = parseInt(a.score.split('/')[0])
+    const scoreB = parseInt(b.score.split('/')[0])
+    return scoreB - scoreA
+  })
+
   return (
-    <div className="bg-card flex flex-1 flex-col gap-2 rounded-2xl border p-3 dark:bg-slate-950">
+    <div className="bg-card flex flex-1 flex-col gap-2 rounded-2xl border p-3 dark:bg-gray-950">
       <div className="flex gap-2">
         <span className="text-muted-foreground text-lg font-bold">
           Últimas Provas Realizadas
