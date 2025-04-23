@@ -2,12 +2,12 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { DefaultLayout } from './pages/_layouts/default-layout'
 import { AI } from './pages/app/ai/ai'
-import { Calendar } from './pages/app/calendario/calendar'
+import { Calendar } from './pages/app/calendar/calendar'
 import { Chat } from './pages/app/chat/chat'
-import { Settings } from './pages/app/configuracoes/settings'
-import { Performance } from './pages/app/desempenho/performance'
+import { Settings } from './pages/app/settings/settings'
+import { Performance } from './pages/app/performance/performance'
 import { Home } from './pages/app/home/home'
-import { Exams } from './pages/app/provas/exams'
+import { Exams } from './pages/app/exams/exams'
 import { Login } from './pages/auth/login'
 
 export const routes = createBrowserRouter([
