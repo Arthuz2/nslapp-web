@@ -4,23 +4,25 @@ import { CalendarHeader } from './calendar-header'
 const Days = [
   {
     day: new Date().getDate() - 2,
-    color: 'bg-blue-600',
+    type: 'non-school',
   },
   {
     day: new Date().getDate() - 1,
-    color: 'bg-zinc-900',
+    type: 'normal',
   },
   {
     day: new Date().getDate(),
-    color: 'bg-red-600',
+    type: 'today',
   },
   {
     day: new Date().getDate() + 1,
-    color: 'bg-green-600',
+    type: 'event',
+    events: ['Festa de São João'],
   },
   {
     day: new Date().getDate() + 2,
-    color: 'bg-green-600',
+    type: 'exam',
+    exams: ['Matemática', 'Português'],
   },
 ]
 
@@ -29,8 +31,14 @@ export function Calendar() {
     <div className="flex h-48 flex-col gap-2 rounded-2xl border p-4">
       <CalendarHeader />
       <div className="flex h-full flex-1 items-center justify-center gap-4">
-        {Days.map((date, i) => (
-          <CalendarDay key={i} day={date.day} color={date.color} />
+        {Days.map((day, i) => (
+          <CalendarDay
+            key={i}
+            day={day.day}
+            type={day.type}
+            exams={day.exams}
+            events={day.events}
+          />
         ))}
       </div>
     </div>
