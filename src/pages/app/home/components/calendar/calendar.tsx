@@ -1,7 +1,7 @@
-import { CalendarDay } from './calendar-day'
+import { CalendarDay, CalendarDayProps } from './calendar-day'
 import { CalendarHeader } from './calendar-header'
 
-const Days = [
+const Days: CalendarDayProps[] = [
   {
     day: new Date().getDate() - 2,
     type: 'non-school',
@@ -13,24 +13,32 @@ const Days = [
   {
     day: new Date().getDate(),
     type: 'today',
+    events: ['Dia dos namorados'],
   },
   {
     day: new Date().getDate() + 1,
-    type: 'event',
+    type: 'normal',
     events: ['Festa de São João'],
   },
   {
     day: new Date().getDate() + 2,
-    type: 'exam',
-    exams: ['Matemática', 'Português'],
+    type: 'normal',
+    exams: ['Matemática'],
   },
 ]
 
 export function Calendar() {
   return (
-    <div className="flex h-48 flex-col gap-2 rounded-2xl border p-4">
+    <div className="flex flex-col rounded-2xl border p-4">
       <CalendarHeader />
-      <div className="flex h-full flex-1 items-center justify-center gap-4">
+      <div className="text-foreground grid flex-1 grid-cols-5 items-center text-center font-semibold">
+        <span className="col-span-1">SEG</span>
+        <span className="col-span-1">TER</span>
+        <span className="col-span-1">QUAR</span>
+        <span className="col-span-1">QUI</span>
+        <span className="col-span-1">SEX</span>
+      </div>
+      <div className="flex h-full flex-1 items-start justify-center gap-4 p-2">
         {Days.map((day, i) => (
           <CalendarDay
             key={i}

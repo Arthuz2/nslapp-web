@@ -1,5 +1,5 @@
-import { CardScore } from '@/pages/app/home/components/card/card-score'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { CardScore } from '@/pages/app/home/components/card/card-score'
 
 const scoreData = [
   {

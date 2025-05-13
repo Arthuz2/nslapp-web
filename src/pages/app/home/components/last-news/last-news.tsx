@@ -1,5 +1,5 @@
-import { CardNews } from '@/pages/app/home/components/card/card-news'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { CardNews } from '@/pages/app/home/components/card/card-news'
 
 const newsData = [
   {

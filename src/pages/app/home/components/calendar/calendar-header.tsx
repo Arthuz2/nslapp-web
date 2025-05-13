@@ -7,11 +7,11 @@ export function CalendarHeader() {
         Calendário
       </span>
       <div className="flex items-center gap-3">
-        <CalendarIndexItem text="Dia Comum" />
-        <CalendarIndexItem text="Dia Atual" />
-        <CalendarIndexItem text="Prova" />
-        <CalendarIndexItem text="Dia não letivo" />
-        <CalendarIndexItem text="Evento" />
+        <CalendarIndexItem text="normal" />
+        <CalendarIndexItem text="today" />
+        <CalendarIndexItem text="non-school" />
+        <CalendarIndexItem text="exam" />
+        <CalendarIndexItem text="event" />
       </div>
     </div>
   )

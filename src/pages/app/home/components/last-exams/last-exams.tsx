@@ -1,5 +1,5 @@
-import { CardExam } from '@/pages/app/home/components/card/card-exam'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { CardExam } from '@/pages/app/home/components/card/card-exam'
 
 const examsData = [
   {
