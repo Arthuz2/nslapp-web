@@ -1,22 +1,49 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Toaster } from '@/components/ui/sonner'
 
 const loginFormSchema = z.object({
   email: z.string().email('E-mail inválido'),
-  password: z.string().min(6, 'Senha deve ter no mínimo 6 caracteres'),
+  password: z.string().min(4, 'Senha deve ter no mínimo 4 caracteres'),
 })
 
 type LoginFormData = z.infer<typeof loginFormSchema>
 
-export function Login() {
-  const { register, handleSubmit } = useForm<LoginFormData>()
+export function SignIn() {
+  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
 
-  function handleUserLogin(data: LoginFormData) {
+  async function handleUserLogin(data: LoginFormData) {
     console.log(data)
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+    toast.success('Login realizado com sucesso!', {
+      description: 'Você será redirecionado para a página inicial.',
+      duration: 2000,
+      richColors: true,
+    })
+    reset()
+    return await setTimeout(() => {
+      navigate('/')
+    }, 3000)
   }
 
   return (
@@ -42,7 +69,7 @@ export function Login() {
           </Label>
           <Input
             id="email"
-            type="e-mail"
+            type="text"
             className="text-foreground placeholder:text-foreground w-full py-5.5 text-lg"
             placeholder="Digite seu e-mail"
             {...register('email')}
@@ -63,10 +90,18 @@ export function Login() {
             {...register('password')}
           />
         </div>
-        <Button className="text-foreground flex cursor-pointer items-center justify-center bg-indigo-600 p-6 text-2xl hover:bg-indigo-700">
-          Logar
+        <Button
+          disabled={isSubmitting}
+          className="text-foreground flex cursor-pointer items-center justify-center p-6 text-2xl font-bold disabled:opacity-50"
+        >
+          {isSubmitting ? (
+            <LoaderCircle className="h-5 w-5 animate-spin" />
+          ) : (
+            'Logar'
+          )}
         </Button>
       </form>
+      <Toaster />
     </div>
   )
 }

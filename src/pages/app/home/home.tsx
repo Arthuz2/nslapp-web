@@ -7,7 +7,7 @@ export function Home() {
   return (
     <div className="flex flex-1 flex-col justify-center gap-4">
       <Calendar />
-      <div className="flex h-full flex-1 justify-evenly gap-3">
+      <div className="flex flex-1 justify-evenly gap-3">
         <Score />
         <LastExams />
         <LastNews />

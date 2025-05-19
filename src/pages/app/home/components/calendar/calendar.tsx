@@ -29,7 +29,7 @@ const Days: CalendarDayProps[] = [
 
 export function Calendar() {
   return (
-    <div className="flex flex-col rounded-2xl border p-4">
+    <div className="flex flex-1 flex-col rounded-2xl border p-4 not-md:hidden">
       <CalendarHeader />
       <div className="text-foreground grid flex-1 grid-cols-5 items-center text-center font-semibold">
         <span className="col-span-1">SEG</span>

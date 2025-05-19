@@ -21,7 +21,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             exams.map((exam, i) => (
               <div key={i} className="flex flex-1 items-center gap-1">
                 <span className="h-3 w-3 rounded-full bg-green-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {exam}
                 </span>
               </div>
@@ -31,7 +31,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             events.map((event, i) => (
               <div key={i} className="flex flex-1 items-center gap-1">
                 <span className="h-3 w-3 rounded-full bg-purple-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {event}
                 </span>
               </div>
@@ -50,7 +50,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             exams.map((exam, i) => (
               <div key={i} className="flex flex-1 items-center gap-1">
                 <span className="h-3 w-3 rounded-full bg-green-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {exam}
                 </span>
               </div>
@@ -60,7 +60,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             events.map((event, i) => (
               <div key={i} className="flex flex-1 items-center gap-1">
                 <span className="h-3 w-3 rounded-full bg-purple-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {event}
                 </span>
               </div>
@@ -79,7 +79,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             exams.map((exam, i) => (
               <div key={i} className="startap-1 flex flex-1 items-center">
                 <span className="h-3 w-3 rounded-full bg-green-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {exam}
                 </span>
               </div>
@@ -89,7 +89,7 @@ export function CalendarDay({ day, type, exams, events }: CalendarDayProps) {
             events.map((event) => (
               <div key={event} className="items-centerr flex flex-1 gap-1">
                 <span className="h-3 w-3 rounded-full bg-purple-600" />
-                <span className="text-foreground w-full text-base font-semibold">
+                <span className="text-foreground w-full min-w-10 text-base font-semibold text-wrap">
                   {event}
                 </span>
               </div>

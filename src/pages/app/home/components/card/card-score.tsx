@@ -35,19 +35,19 @@ export function CardScore({ title, data }: CardScoreProps) {
       </CardHeader>
       <CardContent>
         <div className="flex h-full w-full items-center justify-center gap-1">
-          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+          <div className="flex flex-1 flex-col items-center justify-center gap-2 text-nowrap">
             <span className="text-foreground text-lg">1º Trim</span>
             <span className={`text-lg ${colorMap[data.trimester1.color]}`}>
               {data.trimester1.score}
             </span>
           </div>
-          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+          <div className="flex flex-1 flex-col items-center justify-center gap-2 text-nowrap">
             <span className="text-foreground text-lg">2º Trim</span>
             <span className={`text-lg ${colorMap[data.trimester2.color]}`}>
               {data.trimester2.score}
             </span>
           </div>
-          <div className="flex flex-1 flex-col items-center justify-center gap-2">
+          <div className="flex flex-1 flex-col items-center justify-center gap-2 text-nowrap">
             <span className="text-foreground text-lg">3º Trim</span>
             <span className={`text-lg ${colorMap[data.trimester3.color]}`}>
               {data.trimester3.score}

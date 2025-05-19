@@ -15,6 +15,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarHeader,
+  SidebarRail,
   useSidebar,
 } from '@/components/ui/sidebar'
 
@@ -22,7 +23,22 @@ import { AppSidebarHeader } from './app-sidebar-header'
 import { SidebarNavItem } from './sidebar-nav-item'
 import { SidebarUserProfile } from './sidebar-user-profile'
 
-const sidebarMenuButtons = [
+export type SidebarMenuButtonProps = {
+  title: string
+  icon: React.ReactElement<{ className?: string }>
+  route?: string
+  items?: {
+    title: string
+    route: string
+  }[]
+}
+
+const sidebarUser = {
+  name: 'Arthur Porcino Pereira',
+  classRoom: '3ªIM01-EMI-IPI',
+}
+
+const sidebarMenuButtons: SidebarMenuButtonProps[] = [
   {
     title: 'Home',
     icon: <Home />,
@@ -32,11 +48,19 @@ const sidebarMenuButtons = [
     title: 'Desempenho',
     icon: <LineChart />,
     route: '/desempenho',
+    items: [
+      { title: 'Geral', route: '/geral' },
+      { title: 'Por Disciplina', route: '/disciplina' },
+    ],
   },
   {
     title: 'Provas',
     icon: <ScrollText />,
     route: '/provas',
+    items: [
+      { title: 'Lançar Provas', route: '/lancar' },
+      { title: 'Ver Resultados', route: '/resultados' },
+    ],
   },
   {
     title: 'Calendário',
@@ -72,10 +96,12 @@ export function AppSidebar() {
           {sidebarMenuButtons.map((button) => (
             <SidebarNavItem
               key={button.route}
-              icon={button.icon}
               title={button.title}
+              icon={button.icon}
               route={button.route}
+              items={button.items}
               isCollapsed={isCollapsed}
+              className={isCollapsed ? 'flex items-center justify-center' : ''}
             />
           ))}
         </SidebarGroup>
@@ -88,8 +114,14 @@ export function AppSidebar() {
           isCollapsed={isCollapsed}
           className={isCollapsed ? 'mb-8' : ''}
         />
-        {!isCollapsed && <SidebarUserProfile />}
+        {!isCollapsed && (
+          <SidebarUserProfile
+            name={sidebarUser.name}
+            classRoom={sidebarUser.classRoom}
+          />
+        )}
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   )
 }

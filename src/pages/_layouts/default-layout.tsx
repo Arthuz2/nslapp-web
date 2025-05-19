@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { AppSidebar } from '@/components/sidebar/app-sidebar'
 import { Separator } from '@/components/ui/separator'
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { Toaster } from '@/components/ui/sonner'
 
 import { PageTitle } from './page-title'
 
@@ -20,6 +21,7 @@ export function DefaultLayout() {
           <Separator className="my-2" />
           <div className="mt-1 flex-1 px-3 py-2">
             <Outlet />
+            <Toaster />
           </div>
         </main>
       </SidebarProvider>
