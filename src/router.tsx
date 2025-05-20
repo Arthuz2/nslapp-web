@@ -5,6 +5,7 @@ import { NotFound } from './pages/404'
 import { AI } from './pages/app/ai/ai'
 import { Calendar } from './pages/app/calendar/calendar'
 import { Chat } from './pages/app/chat/chat'
+import { ExamsAnswerKeyUpload } from './pages/app/exams/exams-answer-key-upload'
 import { ExamsResult } from './pages/app/exams/exams-result'
 import { ExamsUpload } from './pages/app/exams/exams-upload'
 import { Home } from './pages/app/home/home'
@@ -32,6 +33,10 @@ export const routes = createBrowserRouter([
           {
             path: '/provas/lancar',
             element: <ExamsUpload />,
+          },
+          {
+            path: '/provas/lancar/:id', // <-- NOVA ROTA DINÂMICA
+            element: <ExamsAnswerKeyUpload />, // <-- Importe esse componente
           },
           {
             path: '/provas/resultados',

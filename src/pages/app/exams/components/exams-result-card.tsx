@@ -25,12 +25,13 @@ export interface ExamsResultCardProps {
   date: string
   answerKey: Array<{
     numberOfQuestion: number
-    answer: 'A' | 'B' | 'C' | 'D' | 'E'
-    answerStudent: 'A' | 'B' | 'C' | 'D' | 'E'
+    answer: string
+    answerStudent: string
   }>
   score: number
   totalPoints: number
   isVisible: boolean
+  hasFiveAlternatives: boolean
 }
 
 export function ExamsResultCard({
@@ -42,7 +43,12 @@ export function ExamsResultCard({
   score,
   totalPoints,
   isVisible,
+  hasFiveAlternatives,
 }: ExamsResultCardProps) {
+  const alternativesToShow = hasFiveAlternatives
+    ? ['A', 'B', 'C', 'D', 'E']
+    : ['A', 'B', 'C', 'D']
+
   return (
     <Card className="mb-2 border border-l-6 border-l-emerald-400 py-3 hover:opacity-90 md:py-6 dark:bg-gray-900">
       <div className="flex w-full items-center px-3 md:justify-between">
@@ -94,21 +100,17 @@ export function ExamsResultCard({
                               <TableCell className="text-foreground not-dark:border-foreground border text-center font-semibold">
                                 {question.numberOfQuestion}
                               </TableCell>
-                              {['A', 'B', 'C', 'D', 'E'].map((option) => {
+                              {alternativesToShow.map((option) => {
                                 let bg = ''
 
-                                if (option === question.answer) {
-                                  bg = acertou
+                                option === question.answer &&
+                                  (bg = acertou
                                     ? 'bg-green-400 dark:bg-green-600'
-                                    : 'bg-emerald-400 dark:bg-emerald-400'
-                                }
+                                    : 'bg-emerald-400 dark:bg-emerald-400')
 
-                                if (
-                                  !acertou &&
-                                  option === question.answerStudent
-                                ) {
-                                  bg = 'bg-red-400 dark:bg-red-700'
-                                }
+                                !acertou &&
+                                  option === question.answerStudent &&
+                                  (bg = 'bg-red-400 dark:bg-red-700')
 
                                 return (
                                   <TableCell

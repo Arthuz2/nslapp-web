@@ -19,16 +19,17 @@ const examsResultData: ExamsResultCardProps[] = [
       { numberOfQuestion: 2, answer: 'A', answerStudent: 'A' },
       { numberOfQuestion: 3, answer: 'A', answerStudent: 'A' },
       { numberOfQuestion: 4, answer: 'A', answerStudent: 'D' },
-      { numberOfQuestion: 5, answer: 'E', answerStudent: 'D' },
+      { numberOfQuestion: 5, answer: 'B', answerStudent: 'D' },
       { numberOfQuestion: 6, answer: 'B', answerStudent: 'B' },
       { numberOfQuestion: 7, answer: 'B', answerStudent: 'B' },
-      { numberOfQuestion: 8, answer: 'B', answerStudent: 'E' },
+      { numberOfQuestion: 8, answer: 'B', answerStudent: 'A' },
       { numberOfQuestion: 9, answer: 'D', answerStudent: 'D' },
-      { numberOfQuestion: 10, answer: 'E', answerStudent: 'E' },
+      { numberOfQuestion: 10, answer: 'D', answerStudent: 'D' },
     ],
     score: 7,
     totalPoints: 12,
     isVisible: true,
+    hasFiveAlternatives: false,
   },
   {
     title: '2° Prova de História',
@@ -48,6 +49,7 @@ const examsResultData: ExamsResultCardProps[] = [
     score: 10,
     totalPoints: 10,
     isVisible: false,
+    hasFiveAlternatives: true,
   },
 ]
 
@@ -68,6 +70,7 @@ export function ExamsResult() {
               score={exam.score}
               totalPoints={exam.totalPoints}
               isVisible={exam.isVisible}
+              hasFiveAlternatives={exam.hasFiveAlternatives}
             />
           ))}
           <ScrollBar orientation="horizontal" />
