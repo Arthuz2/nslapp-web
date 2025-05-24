@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { DefaultLayout } from './pages/_layouts/default-layout'
 import { NotFound } from './pages/404'
 import { AI } from './pages/app/ai/ai'
-import { Calendar } from './pages/app/calendar/calendar'
+import { AppCalendar } from './pages/app/calendar/app-calendar'
 import { Chat } from './pages/app/chat/chat'
 import { ExamsAnswerKeyUpload } from './pages/app/exams/exams-answer-key-upload'
 import { ExamsResult } from './pages/app/exams/exams-result'
@@ -46,7 +46,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/calendario',
-        element: <Calendar />,
+        element: <AppCalendar />,
       },
       {
         path: '/chat',
