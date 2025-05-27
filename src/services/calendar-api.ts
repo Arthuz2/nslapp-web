@@ -84,13 +84,6 @@ export const getStaticHolidays = (year: number): CalendarEvent[] => {
       description: 'Homenagem aos pais',
     },
     {
-      id: 'childrens-day',
-      title: 'Dia das Crianças',
-      type: 'event',
-      date: new Date(year, 9, 12),
-      description: 'Dia dedicado às crianças',
-    },
-    {
       id: 'valentines-day',
       title: 'Dia dos Namorados',
       type: 'event',
@@ -128,7 +121,7 @@ export const fetchSchoolEvents = async (
       id: 'math-exam-1',
       title: 'Prova de Matemática',
       type: 'exam',
-      date: new Date(year, 5, 15),
+      date: new Date(year, 4, 15),
       subject: 'Matemática',
       description: 'Prova do 1º bimestre',
     },
@@ -136,7 +129,7 @@ export const fetchSchoolEvents = async (
       id: 'history-exam',
       title: 'Prova de História',
       type: 'exam',
-      date: new Date(year, 5, 18),
+      date: new Date(year, 4, 18),
       subject: 'História',
       description: 'Avaliação sobre Brasil Colonial',
     },
@@ -144,7 +137,7 @@ export const fetchSchoolEvents = async (
       id: 'science-fair',
       title: 'Feira de Ciências',
       type: 'event',
-      date: new Date(year, 5, 20),
+      date: new Date(year, 4, 20),
       description: 'Apresentação de projetos científicos',
     },
     {
@@ -163,7 +156,7 @@ export const fetchBrazilianHolidays = async (
 ): Promise<CalendarEvent[]> => {
   try {
     const response = await fetch(
-      `https://brasilapi.com.br/api/feriados/v1/${year}`,
+      `https://api.invertexto.com/v1/holidays/${year}?token=19789|i0XWT4arcfQVoy9nHLNgtodw9XUOhhIt&state=ES`,
     )
     if (!response.ok) {
       throw new Error('Failed to fetch holidays')
@@ -171,13 +164,23 @@ export const fetchBrazilianHolidays = async (
 
     const holidays: HolidayApiResponse[] = await response.json()
 
-    return holidays.map((holiday, index) => ({
-      id: `api-holiday-${index}`,
-      title: holiday.name,
-      type: 'holiday' as const,
-      date: new Date(holiday.date),
-      description: 'Feriado Nacional',
-    }))
+    return holidays.map((holiday, index) => {
+      const dateArray = holiday.date.split('-')
+      const correctDate = new Date(
+        Number(dateArray[0]),
+        Number(dateArray[1]) - 1,
+        Number(dateArray[2]),
+      )
+
+      return {
+        id: `api-holiday-${index}`,
+        title: holiday.name,
+        type: 'holiday' as const,
+        level: holiday.level,
+        date: new Date(correctDate),
+        description: 'Feriado Nacional',
+      }
+    })
   } catch (error) {
     console.warn(
       'Failed to fetch holidays from API, using static holidays:',
